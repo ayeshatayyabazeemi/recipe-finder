@@ -15,6 +15,28 @@ export const fetchRecipes = async (query) => {
 };
 
 
+export const fetchRecipesbycategory = async (query) => {
+  try {
+    const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${query}`);
+    return response.data.meals;
+  } catch (error) {
+    console.error("Error fetching recipes by category:", error);
+    return [];
+  }
+};
+
+
+export const fetchRecipesbyingredient = async (query) => {
+  try {
+    const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`);
+    return response.data.meals;
+  } catch (error) {
+    console.error("Error fetching recipes by category:", error);
+    return [];
+  }
+};
+
+
 export const fetchRecipes_by_id = async (id) => {
   try {
     const response = await axios.get(
